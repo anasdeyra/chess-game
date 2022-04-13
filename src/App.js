@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import useBoard from "./hooks/useBoard";
+import Board from "./components/Board";
 
 function App() {
+  const { board, activeColor, movePiece, flipBoard, isFlipped } = useBoard();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ color: "whitesmoke" }} id="app">
+      <h1>Chess JS</h1>
+      <h2>{activeColor[0]} to play</h2>
+      <Board
+        isFlipped={isFlipped}
+        activeColor={activeColor[0]}
+        board={board}
+        movePiece={movePiece}
+      />
+      <button onClick={flipBoard}>flip the board</button>
     </div>
   );
 }
